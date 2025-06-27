@@ -22,6 +22,7 @@ abstract class Mensaje {
     }
 
     public abstract void enviarMensaje();
+
     public abstract String visualizarMensaje();
 }
 
