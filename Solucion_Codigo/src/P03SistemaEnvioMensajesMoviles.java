@@ -1,20 +1,21 @@
 class Movil {
-    private String numero;
-    private String nombre;
+    private final String numero;
+    private final String nombre;
 
     public Movil(String numero, String nombre) {
         this.numero = numero;
         this.nombre = nombre;
     }
 
+    @Override
     public String toString() {
         return nombre + " (" + numero + ")";
     }
 }
 
 abstract class Mensaje {
-    protected Movil remitente;
-    protected Movil destinatario;
+    protected final Movil remitente;
+    protected final Movil destinatario;
 
     public Mensaje(Movil remitente, Movil destinatario) {
         this.remitente = remitente;
@@ -27,7 +28,7 @@ abstract class Mensaje {
 }
 
 class SMS extends Mensaje {
-    private String contenido;
+    private final String contenido;
 
     public SMS(Movil remitente, Movil destinatario, String contenido) {
         super(remitente, destinatario);
@@ -36,17 +37,17 @@ class SMS extends Mensaje {
 
     @Override
     public void enviarMensaje() {
-        // lógica de envío (simulada)
+        System.out.println("Enviando SMS de " + remitente + " a " + destinatario + ": " + contenido);
     }
 
     @Override
     public String visualizarMensaje() {
-        return contenido;
+        return "SMS de " + remitente + " para " + destinatario + ": " + contenido;
     }
 }
 
 class MMS extends Mensaje {
-    private String archivoImagen;
+    private final String archivoImagen;
 
     public MMS(Movil remitente, Movil destinatario, String archivoImagen) {
         super(remitente, destinatario);
@@ -55,11 +56,11 @@ class MMS extends Mensaje {
 
     @Override
     public void enviarMensaje() {
-        // lógica de envío (simulada)
+        System.out.println("Enviando MMS de " + remitente + " a " + destinatario + ": [Imagen: " + archivoImagen + "]");
     }
 
     @Override
     public String visualizarMensaje() {
-        return archivoImagen;
+        return "MMS de " + remitente + " para " + destinatario + ": Imagen -> " + archivoImagen;
     }
 }

@@ -1,15 +1,15 @@
 public class P03SistemaEnvioMensajesMovilesEjecutor {
     public static void main(String[] args) {
-        Movil m1 = new Movil("0987654321", "Juan");
-        Movil m2 = new Movil("0998765432", "Ana");
+        Movil movil1 = new Movil("3001234567", "Ana");
+        Movil movil2 = new Movil("3109876543", "Luis");
 
-        SMS sms = new SMS(m1, m2, "Hola Ana, ¿cómo estás?");
-        MMS mms = new MMS(m1, m2, "imagen1.jpg");
+        Mensaje sms = new SMS(movil1, movil2, "¡Hola, cómo estás?");
+        Mensaje mms = new MMS(movil2, movil1, "foto_vacaciones.jpg");
 
         sms.enviarMensaje();
-        mms.enviarMensaje();
+        System.out.println(sms.visualizarMensaje());
 
-        System.out.println("SMS: " + sms.visualizarMensaje());
-        System.out.println("MMS: " + mms.visualizarMensaje());
+        mms.enviarMensaje();
+        System.out.println(mms.visualizarMensaje());
     }
 }
